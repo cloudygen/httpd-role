@@ -1,0 +1,5 @@
+<h1>Welcome to {{ ansible_facts['hostname'] }}<br>
+The IP of the system is {{ ansible_facts['default_ipv4']['address'] }}<br>
+The Hostname of the system is {{ ansible_facts['hostname'] }}<br>
+The virtualization type is {{ ansible_facts['bios_version'] }}<br>
+The host OS is {{ ansible_facts['os_family'] }}</h1>

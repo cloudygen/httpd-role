@@ -1,0 +1,4 @@
+- name: restart-web
+  ansible.builtin.service:
+    name: "{{ svc }}"
+    state: restarted

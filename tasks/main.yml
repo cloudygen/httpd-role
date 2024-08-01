@@ -1,0 +1,30 @@
+- name: installing apache httpd
+  ansible.builtin.dnf:
+    name: "{{ pkg }}"
+    state: latest
+- name: start and enable httpd
+  ansible.builtin.service:
+    name: "{{ svc }}"
+    state: started
+    enabled: yes
+- name: allow http from firewalld
+  ansible.posix.firewalld:
+    service: "{{ rule }}"
+    permanent: true
+    immediate: true
+    state: enabled
+- name: templating website index file
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: '0664'
+  notify: restart-web
+- name: copying file to /tmp
+  ansible.builtin.copy:
+    src: test
+    dest: /etc/test
+    owner: subodh
+    group: subodh
+    mode: '4644'
