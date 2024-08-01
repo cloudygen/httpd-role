@@ -24,7 +24,7 @@
 - name: copying file to /tmp
   ansible.builtin.copy:
     src: test
-    dest: /etc/test
+    dest: /tmp/test
     owner: subodh
     group: subodh
     mode: '4644'
